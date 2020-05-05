@@ -1,13 +1,15 @@
 import React from 'react';
-
 import './App.scss';
+import Menu from '../Menu/Menu';
+import DcForm from '../DcForm/DcForm';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <h1>U mnie działa</h1>
+      <Menu />
+      <DcForm/>
     </div>
   );
 }
 
-export default App;
+
