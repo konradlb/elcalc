@@ -1,49 +1,50 @@
 # Kalkulator elektryka
-> Final project at the end of the Front-end Developer course at CodersLab.
+Final project at the end of the Front-end Developer course at CodersLab.
+
+http://lubowicki.pl/elcalc
 
 ## Table of contents
 * [General info](#general-info)
-* [Screenshots](#screenshots)
+* [Screenshot](#screenshot)
 * [Technologies](#technologies)
-* [Setup](#setup)
-* [Features](#features)
-* [Status](#status)
+* [Installation](#installation)
+* [Usage](#usage)
+* [To-do list](#to-do-list)
 * [Inspiration](#inspiration)
 * [Contact](#contact)
 
 ## General info
 A simple calculator that performs calculations without reloading the page after entering any two numerical values.
 
-## Screenshots
-![Example screenshot](/public/img/screen.png)
+## Screenshot
+![Example screenshot](public/img/screen.png)
 
 ## Technologies
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* React
+* SASS
+* Webpack
 
-## Setup
-Describe how to install / setup your local environement / add link to demo version.
+## Installation
 
-## Code Examples
-Show examples of usage:
-`put-your-code-here`
+Use the npm to install all necessary packages:
 
-## Features
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+```bash
+npm install
+```
 
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+## Usage
 
-## Status
-Project is: _in progress_, _finished_, _no longer continue_ and why?
+```bash
+npm start
+```
+
+## To-do list
+* Add more calculators for AC and 3fAC
+* Add responsive
+
 
 ## Inspiration
-Add here credits. Project inspired by..., based on...
+I am an electrical engineer and would like to combine my experience in the field of electrical engineering with IT
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by [Konrad Lubowicki](http://www.lubowicki.pl/) - feel free to contact me!
