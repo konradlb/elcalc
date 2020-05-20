@@ -3,14 +3,14 @@ import React from "react";
 
 export default function Menu() {
     return (
-        <div>
-            <h1>Menu:</h1>
-            <ul>
-                <li>Prąd stały</li>
-                <li>Prąd zmienny 1f</li>
-                <li>Prąd zmienny 3f</li>
+        <nav className="page-nav">
+            <ul className="page-nav-list">
+                <li><a href="#">Prąd stały</a></li>
+                <li><a href="#">Prąd zmienny 1f</a></li>
+                <li><a href="#">Prąd zmienny 3f</a></li>
+                <li><a href="#">Dobór kabla</a></li>
             </ul>
-        </div>
+        </nav>
     );
 }
 

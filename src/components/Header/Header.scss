@@ -1,0 +1,30 @@
+@import url(https://fonts.googleapis.com/css?family=Knewave);
+
+.page-header{
+  top: 0;
+  //position: sticky;
+  //background-color: #f8ca00;
+  background-color: white;
+  padding: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  opacity: 0.9;
+
+}
+.page-header .headerContainer{
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  align-items: center;
+}
+
+.pageLogo{
+  border-radius: 5px;
+}
+.pageTitle{
+  font-family: "Knewave";
+  font-size: 3.5vw;
+  text-decoration: none;
+  color: #fb1;
+  margin-left: 1vw;
+}

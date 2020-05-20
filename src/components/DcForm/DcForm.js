@@ -1,44 +1,54 @@
 import './DCForm.scss';
 import React, { useState, useEffect } from 'react'
-let message = "";
-let calculateFlag = false ;
 
+let calculateFlag = false ;
+const message2 = "Podaj dwie dowolne wartości"
+const message1 = "Podaj jeszcze jedną wartość"
+const message0 = ""
+const roundFactor = 4;
 //formDc[`${name}`] = value;
 
 export default function DcForm() {
-
-    //const [changedName, setChangedName] = useState("")
 
     const [formDc, setFormDc] = useState({
         r: 0,
         u: 0,
         i: 0,
         p: 0
-    })
+    });
+    const [message, setMessage] = useState(message2);
+
 
     const handleChange = (e) =>{
         const name = e.target.name;
         const value = parseFloat(e.target.value);
         setFormDc(prev =>({...prev, [name]: value}));
         calculateFlag = true;
-
     }
 
+    const round = (n, k) => {
+        const factor = Math.pow(10, k+1);
+        n = Math.round(Math.round(n*factor)/10);
+        return n/(factor/10)
+    }
 
-    const multiplicate = (a, b, name) =>{
-        const res = (a*b);
+    const multiply = (a, b, name) =>{
+        const res = round((a*b), roundFactor);
         //console.log("mnożenie:"+res);
         setFormDc(prev =>({...prev, [name]: res}));
+        setMessage(prev => message0);
     }
     const divide = (a, b, name) =>{
-        const res = (a/b);
+        const res = round((a/b), roundFactor);
         //console.log("dzielenie:"+res);
         setFormDc(prev =>({...prev, [name]: res}));
+        setMessage(prev => message0);
     }
     const sqrt = (a, name) =>{
-        const res = Math.sqrt(a);
+        const res = round(Math.sqrt(a), roundFactor);
         //console.log("pierwiastek:"+res);
         setFormDc(prev =>({...prev, [name]: res}));
+        setMessage(prev => message0);
     }
 
 
@@ -51,15 +61,15 @@ export default function DcForm() {
         console.log("calculateR");
     }
     const calculateU = () => {
-        multiplicate(formDc.r, formDc.i, "u");
+        multiply(formDc.r, formDc.i, "u");
         console.log("calculateU");
     }
     const calculateP = () => {
-        multiplicate(formDc.u, formDc.i, "p");
+        multiply(formDc.u, formDc.i, "p");
         console.log("calculateP");
     }
     const calculatePFromRI = () => {
-        multiplicate(formDc.r, (formDc.i * formDc.i), "p");
+        multiply(formDc.r, (formDc.i * formDc.i), "p");
         console.log("calculatePfromRI");
     }
     const calculatePFromUR = () => {
@@ -91,18 +101,14 @@ export default function DcForm() {
         console.log("calculateUfromIP");
     }
 
-    console.log("------------------------");
-
-
-
-
-        //zdarzenie na zmiane R
+/*-------- zdarzenie na zmianę R ------*/
     useEffect( () =>{
         if(calculateFlag){
             calculateFlag = false
 
             console.log("useEffect na r, R: " + formDc.r + ' \u03A9');
-            if (    (formDc.u === 0) && (formDc.i === 0) && (formDc.p === 0)   ) {}
+            if (    (formDc.u === 0) && (formDc.i === 0) && (formDc.p === 0)   ) {
+                setMessage(prev => message1);}
             else if (   (formDc.u === 0) && (formDc.i !== 0)    ) {calculateU()}
             else if (   formDc.i !==0   ) { calculateI() }
             else if (   (formDc.u === 0)  && (formDc.i === 0)    ){
@@ -129,7 +135,8 @@ export default function DcForm() {
 
             console.log("useEffect na u, U:" + formDc.u + "V");
 
-            if (    (formDc.r === 0) && (formDc.i === 0) && (formDc.p === 0)    ) {}
+            if (    (formDc.r === 0) && (formDc.i === 0) && (formDc.p === 0)    ) {
+                setMessage(prev => message1);}
             else if (formDc.r !== 0) { calculateI() }
             else if (   (formDc.i !== 0)  && (formDc.r === 0)   ) { calculateR() }
             else if (   (formDc.i === 0)  && (formDc.r === 0)   ) {
@@ -151,7 +158,8 @@ export default function DcForm() {
 
             console.log("useEffect na i, I: " + formDc.i + "A");
 
-            if (    (formDc.r === 0) && (formDc.u === 0) && (formDc.p === 0)    ) {console.log("rob nic");}
+            if (    (formDc.r === 0) && (formDc.u === 0) && (formDc.p === 0)    ) {
+                setMessage(prev => message1);}
             else if (formDc.r !== 0) {calculateU()}
             else if (   (formDc.i !== 0) && (formDc.u !==0) ) {calculateR()}
             else if (   (formDc.p !== 0) && (formDc.r === 0) && (formDc.u === 0)   ) {
@@ -172,7 +180,8 @@ export default function DcForm() {
 
             console.log("useEffect na p, P: " + formDc.p + "W");
 
-            if ((formDc.r === 0) && (formDc.u === 0) && (formDc.i === 0)) {}
+            if ((formDc.r === 0) && (formDc.u === 0) && (formDc.i === 0)) {
+                setMessage(prev => message1);}
             else if ((formDc.i !== 0) && (formDc.r === 0) && (formDc.u === 0)) {
                 calculateUFromIP();
                 calculateRFromIP();
@@ -185,55 +194,66 @@ export default function DcForm() {
                 calculateUFromRP();
                 calculateIFromRP();
             }
-
-
         }
     }, [formDc.p])
 
 
-
-
     return (
-        <div>
-            <p>{message}</p>
+        <div className="dcForm">
+            <span className="contentBackground"/>
+
+            {message && <div className="message">{message}</div>}
+
             <form>
-                <label htmlFor="r">R:</label>
-                <input
-                    value={formDc.r}
-                    onChange={handleChange}
-                    id="r"
-                    name="r"
-                    type="number"
 
-                />
-                <label htmlFor="i">U:</label>
-                <input
-                    value={formDc.u}
-                    onChange={handleChange}
-                    id="u"
-                    name="u"
-                    type="number"
+                <div className="field">
+                    <label htmlFor="r">R:</label>
+                    <input
+                        value={formDc.r}
+                        onChange={handleChange}
+                        id="r"
+                        name="r"
+                        type="number"
+                    />
 
-                />
-                <label htmlFor="i">I:</label>
-                <input
-                    value={formDc.i}
-                    onChange={handleChange}
-                    id="i"
-                    name="i"
-                    type="number"
+                </div>
 
-                />
-                <label htmlFor="p">P:</label>
-                <input
-                    value={formDc.p}
-                    onChange={handleChange}
-                    id="p"
-                    name="p"
-                    type="number"
+                <div className="field">
+                    <label htmlFor="i">U:</label>
+                    <input
+                        value={formDc.u}
+                        onChange={handleChange}
+                        id="u"
+                        name="u"
+                        type="number"
+                    />
+                </div>
 
-                />
+                <div className="field">
+                    <label htmlFor="i">I:</label>
+                    <input
+                        value={formDc.i}
+                        onChange={handleChange}
+                        id="i"
+                        name="i"
+                        type="number"
+                    />
+                </div>
+
+                <div className="field">
+                    <label htmlFor="p">P:</label>
+                    <input
+                        value={formDc.p}
+                        onChange={handleChange}
+                        id="p"
+                        name="p"
+                        type="number"
+                    />
+                </div>
+
             </form>
+
+
         </div>
     )
 }
