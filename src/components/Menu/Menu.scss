@@ -1,0 +1,17 @@
+.page-nav {}
+.page-nav-list {
+  display: flex;
+}
+.page-nav-list li {
+  margin: 0.5vw;
+}
+.page-nav-list a {
+  //text-transform: uppercase;
+  text-decoration: none;
+  color: #8E9696;
+  font-weight: 600;
+  font-size: 1.1vw;
+}
+.page-nav-list a:hover {
+  color: tomato;
+}

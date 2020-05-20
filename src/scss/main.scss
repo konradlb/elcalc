@@ -1,7 +1,14 @@
 @import "./reset";
 @import "./grid";
 //@import "./fonts";
-
+*{
+  box-sizing: border-box;
+}
 body{
-  background-color: #bada55;
+  background-image: url("/img/background.jpg");
+
+  //https://pixabay.com/photos/electricity-power-poles-power-lines-3442835/
+  font-family: "Nunito Sans", sans-serif;
+  padding: 3% 3%;
+
 }
