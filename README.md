@@ -37,14 +37,15 @@ npm install
 ```bash
 npm start
 ```
+or just copy ``public`` directory on webserwer.
 
 ## To-do list
-* Add more calculators for AC and 3fAC
+* Add more calculators for AC, 3fAC, cable selection.
 * Add responsive
 
 
 ## Inspiration
-I am an electrical engineer and would like to combine my experience in the field of electrical engineering with IT
+I am an electrical engineer and would like to combine my electrical experience with IT.
 
 ## Contact
 Created by [Konrad Lubowicki](http://www.lubowicki.pl/) - feel free to contact me!
